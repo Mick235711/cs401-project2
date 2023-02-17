@@ -30,7 +30,7 @@ spec:
             claimName: playlist-recommend-server-pvc
       containers:
         - name: playlist-recommend-server-frontend
-          image: mick235711/playlist-recommend-server-frontend:v0.2
+          image: mick235711/playlist-recommend-server-frontend:v0.1
           ports:
             - containerPort: 30508
           volumeMounts:
