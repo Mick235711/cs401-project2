@@ -1,0 +1,33 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: playlist-recommend-server-ml-service
+spec:
+  selector:
+    app: playlist-recommend-server-ml
+  ports:
+    - protocol: TCP
+      port: 30508
+      targetPort: 30508
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: playlist-recommend-server-ml-pod
+spec:
+  restartPolicy: OnFailure
+  volumes:
+    - name: project2-pv-yl685
+      persistentVolumeClaim:
+        claimName: playlist-recommend-server-pvc
+  containers:
+    - name: playlist-recommend-server-ml
+      image: mick235711/playlist-recommend-server-ml:v0.1
+      env:
+        - name: PLAYLIST_FILENAME
+          value: "playlist-sample-ds1.csv"
+      ports:
+        - containerPort: 30508
+      volumeMounts:
+        - mountPath: "/home/yl685/project2-shared-folder"
+          name: project2-pv-yl685

@@ -1,0 +1,38 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: playlist-recommend-server-frontend-service
+spec:
+  selector:
+    app: playlist-recommend-server-frontend
+  ports:
+    - protocol: TCP
+      port: 30508
+      targetPort: 30508
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: playlist-recommend-server-frontend-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: playlist-recommend-server-frontend
+  template:
+    metadata:
+      labels:
+        app: playlist-recommend-server-frontend
+    spec:
+      volumes:
+        - name: project2-pv-yl685
+          persistentVolumeClaim:
+            claimName: playlist-recommend-server-pvc
+      containers:
+        - name: playlist-recommend-server-frontend
+          image: mick235711/playlist-recommend-server-frontend:v0.1
+          ports:
+            - containerPort: 30508
+          volumeMounts:
+            - mountPath: "/home/yl685/project2-shared-folder"
+              name: project2-pv-yl685
