@@ -13,7 +13,7 @@ spec:
 apiVersion: v1
 kind: Pod
 metadata:
-  name: playlist-recommend-server-ml-pod-2
+  name: playlist-recommend-server-ml-pod-3
 spec:
   restartPolicy: OnFailure
   volumes:
@@ -25,7 +25,7 @@ spec:
       image: mick235711/playlist-recommend-server-ml:v0.3
       env:
         - name: PLAYLIST_FILENAME
-          value: "playlist-sample-ds1.csv"
+          value: "playlist-sample-ds2.csv"
       ports:
         - containerPort: 30508
       volumeMounts:
