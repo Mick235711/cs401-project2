@@ -13,7 +13,7 @@ spec:
 apiVersion: v1
 kind: Pod
 metadata:
-  name: playlist-recommend-server-ml-pod
+  name: playlist-recommend-server-ml-pod-2
 spec:
   restartPolicy: OnFailure
   volumes:
@@ -22,7 +22,7 @@ spec:
         claimName: playlist-recommend-server-pvc
   containers:
     - name: playlist-recommend-server-ml
-      image: mick235711/playlist-recommend-server-ml:v0.2
+      image: mick235711/playlist-recommend-server-ml:v0.3
       env:
         - name: PLAYLIST_FILENAME
           value: "playlist-sample-ds1.csv"
