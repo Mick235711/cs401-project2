@@ -22,7 +22,7 @@ spec:
         claimName: playlist-recommend-server-pvc
   containers:
     - name: playlist-recommend-server-ml
-      image: mick235711/playlist-recommend-server-ml:v0.1
+      image: mick235711/playlist-recommend-server-ml:v0.2
       env:
         - name: PLAYLIST_FILENAME
           value: "playlist-sample-ds1.csv"
